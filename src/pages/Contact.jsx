@@ -1,19 +1,36 @@
 import { useState } from 'react'
 import { Eyebrow } from '../components/Common'
 import { EMAIL, PHONE, PHONE_LINK } from '../data'
+import { sendEmail } from '../sendEmail'
 
 function Contact() {
   const [form, setForm] = useState({ name: '', contact: '', message: '' })
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    // no backend yet, so we just show a thank-you message
-    setSent(true)
+    setSending(true)
+    setError('')
+
+    try {
+      await sendEmail(`Contact form message from ${form.name}`, {
+        name: form.name,
+        'Phone or email': form.contact,
+        message: form.message,
+      })
+      setSent(true)
+    } catch (err) {
+      console.error(err)
+      setError(`Sorry, the message could not be sent. Please call ${PHONE} or email ${EMAIL}.`)
+    }
+
+    setSending(false)
   }
 
   return (
@@ -64,8 +81,9 @@ function Contact() {
               value={form.message}
               onChange={handleChange}
             />
-            <button type="submit" className="btn btn-navy">
-              Send
+            {error && <p className="form-error">{error}</p>}
+            <button type="submit" className="btn btn-navy" disabled={sending}>
+              {sending ? 'Sending…' : 'Send'}
             </button>
           </>
         )}

@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { PHONE } from '../data'
+import { EMAIL, PHONE } from '../data'
+import { sendEmail } from '../sendEmail'
 
 const planOptions = ['Seasonal contract', 'Per visit', 'Salting only']
 const serviceOptions = ['Driveway clearing', 'Sidewalk shovelling', 'Salting & de-icing', 'Pet-safe salt']
@@ -8,6 +9,8 @@ function Quote() {
   const [plan, setPlan] = useState(0)
   const [selected, setSelected] = useState(['Driveway clearing', 'Sidewalk shovelling', 'Salting & de-icing'])
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
   function toggleService(name) {
     if (selected.includes(name)) {
@@ -17,9 +20,27 @@ function Quote() {
     }
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    setSent(true)
+    setSending(true)
+    setError('')
+
+    // read all the inputs by their "name"
+    const data = Object.fromEntries(new FormData(e.target))
+
+    try {
+      await sendEmail(`Quote request from ${data.name}`, {
+        plan: planOptions[plan],
+        services: selected.join(', ') || 'None selected',
+        ...data,
+      })
+      setSent(true)
+    } catch (err) {
+      console.error(err)
+      setError(`Sorry, the request could not be sent. Please call ${PHONE} or email ${EMAIL}.`)
+    }
+
+    setSending(false)
   }
 
   return (
@@ -72,10 +93,10 @@ function Quote() {
 
             <div className="form-group">
               <div className="form-label">3 · Property</div>
-              <input className="input" placeholder="Street address" required />
+              <input className="input" name="address" placeholder="Street address" required />
               <div className="form-row">
-                <input className="input" placeholder="Postal code" required />
-                <select className="input" defaultValue="">
+                <input className="input" name="postal_code" placeholder="Postal code" required />
+                <select className="input" name="front_steps" defaultValue="">
                   <option value="" disabled>
                     Number of front steps
                   </option>
@@ -90,14 +111,16 @@ function Quote() {
             <div className="form-group">
               <div className="form-label">4 · Contact</div>
               <div className="form-row">
-                <input className="input" placeholder="Full name" required />
-                <input className="input" type="tel" placeholder="Mobile (for photo proof)" />
+                <input className="input" name="name" placeholder="Full name" required />
+                <input className="input" name="mobile" type="tel" placeholder="Mobile (for photo proof)" />
               </div>
-              <input className="input" type="email" placeholder="Email" required />
+              {/* "email" is also used as the reply-to address */}
+              <input className="input" name="email" type="email" placeholder="Email" required />
             </div>
 
-            <button type="submit" className="btn btn-navy btn-big">
-              Send request
+            {error && <p className="form-error">{error}</p>}
+            <button type="submit" className="btn btn-navy btn-big" disabled={sending}>
+              {sending ? 'Sending…' : 'Send request'}
             </button>
           </>
         )}

@@ -3,7 +3,7 @@ import { Eyebrow, IconBox, Photo } from '../components/Common'
 import { DiamondMark } from '../components/Logo'
 import { services, steps, areas, photos, PHONE, PHONE_LINK } from '../data'
 
-const trustItems = ['Photo proof after every visit', 'Fully insured · [WSIB / liability]', 'Response within [X] hrs of snowfall']
+const trustItems = ['Photo proof after every visit', 'Fully insured', 'Response within 2 hrs of snowfall']
 
 function Home() {
   return (

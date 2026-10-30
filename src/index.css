@@ -1136,6 +1136,17 @@ textarea {
   border-color: var(--blue);
 }
 
+.form-error {
+  margin: 0;
+  font-size: 14px;
+  color: #b3261e;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
 .textarea {
   height: 130px;
   padding: 14px 16px;

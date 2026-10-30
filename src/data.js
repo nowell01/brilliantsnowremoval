@@ -2,7 +2,7 @@
 
 export const PHONE = '(437) 872-8353'
 export const PHONE_LINK = 'tel:+14378728353'
-export const EMAIL = 'info@brilliantsnow.ca'
+export const EMAIL = 'tvt25740@gmail.com'
 
 // free photos from Unsplash
 const img = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=70`
