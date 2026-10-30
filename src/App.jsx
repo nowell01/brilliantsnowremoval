@@ -11,7 +11,7 @@ import About from './pages/About'
 import Faq from './pages/Faq'
 import Contact from './pages/Contact'
 import Quote from './pages/Quote'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   const location = useLocation()
