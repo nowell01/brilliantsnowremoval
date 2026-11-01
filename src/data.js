@@ -5,15 +5,15 @@ export const PHONE_LINK = 'tel:+14378728353'
 export const EMAIL = 'info@brilliantsnow.ca'
 
 // free photos from Unsplash
-const img = (id) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=70`
 
 export const photos = {
-  hero: img('photo-1612208695882-02f2322b7fee'),
-  street: img('photo-1551582045-6ec9c11d8697'),
-  house: img('photo-1517299321609-52687d1bc55a'),
-  frost: img('photo-1478265409131-1f65c88f965c'),
-  path: img('photo-1516431883659-655d41c09bf9'),
-  sunrise: img('photo-1483664852095-d6cc6870702d'),
+  hero: "/Snow-Removal_1759119807000.jpg",
+  street: "/complete-work.jpg.bv.webp",
+  house: "/istockphoto-1222260612-612x612_1759114781587.jpg",
+  frost: "/shoveling.jpg",
+  path: "/path.png",
+  sunrise: "/istockphoto-182401031-612x612_1759114781587.jpg",
+  salting: "/salting.jpg",
 }
 
 export const navLinks = [
@@ -40,7 +40,7 @@ export const services = [
     short: 'Walkways, steps and city sidewalk frontage, cleared edge to edge.',
     desc: 'Walkway, front steps and city sidewalk frontage, cleared to pavement.',
     included: ['Edges squared', 'Steps & landing', 'Snow placed away from drains'],
-    photo: photos.hero,
+    photo: photos.frost,
   },
   {
     n: '03',
@@ -48,14 +48,14 @@ export const services = [
     short: 'Measured application after clearing. Pet-safe option available.',
     desc: 'Measured application after every clear, or on ice-only days.',
     included: ['Rock salt or pet-safe blend', 'Steps & slopes prioritised', 'No over-salting near gardens'],
-    photo: photos.frost,
+    photo: photos.salting,
   },
   {
     n: '04',
     name: 'Seasonal contract',
     short: 'Every qualifying snowfall, Nov–Apr. One fixed price.',
     desc: 'Every qualifying snowfall from Nov 15 to Apr 15, at a fixed price.',
-    included: ['Priority dispatch', 'Salting included', 'Installments available'],
+    included: ['Priority dispatch', 'Installments available'],
     photo: photos.house,
   },
   {
@@ -63,7 +63,7 @@ export const services = [
     name: 'Per-visit / on-call',
     short: 'Call when you need us. Priced per visit.',
     desc: 'One visit, when you need it. Booked by phone.',
-    included: ['Same checklist as contracts', 'Salting included', 'Subject to availability'],
+    included: ['Same checklist as contracts', 'Subject to availability'],
     photo: photos.path,
   },
 ]
@@ -76,23 +76,26 @@ export const steps = [
 
 export const plans = [
   {
+    id: 1,
     name: 'Per visit',
     price: '$100–$350+',
     unit: '/ visit',
     text: 'Book by phone when needed. Subject to crew availability.',
-    features: ['Driveway, sidewalk & walkway', 'Salting included', 'Photo proof'],
+    features: ['Driveway, sidewalk & walkway', 'Photo proof'],
     button: 'Call to book',
   },
   {
+    id: 0,
     name: 'Seasonal contract',
     price: '$450–$1800+',
     unit: '/ season',
     text: 'Nov 15 – Apr 15. Priority dispatch.',
-    features: ['Unlimited qualifying visits', 'Salting after every clear', 'Photo proof', 'Installments available'],
+    features: ['Unlimited qualifying visits', 'Photo proof', 'Installments available'],
     button: 'Call to reserve',
     featured: true,
   },
   {
+    id: 2,
     name: 'Salting only',
     price: '$20–$60',
     unit: '/ application',

@@ -31,16 +31,6 @@ function Home() {
         <div className="hero-photo">
           <div className="photo-frame"></div>
           <Photo src={photos.hero} alt="Freshly cleared snowy path" className="hero-img" />
-          <span className="hero-corner"></span>
-          <div className="visit-card">
-            <img src={photos.path} alt="" className="visit-thumb" />
-            <div>
-              <div className="visit-title">
-                <span className="small-diamond"></span>Visit complete
-              </div>
-              <div className="mono small-gray">06:42 · Cleared + salted</div>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -104,7 +94,7 @@ function Home() {
             </div>
             <Photo src={photos.street} alt="Cleared walkway" className="phone-card-img" />
             <div className="phone-card-text">
-              Visit complete at 34 Example Ave. Driveway, walkway and sidewalk cleared and salted.
+              Visit complete at 34 Eglinton Ave. Driveway, walkway and sidewalk cleared and salted.
             </div>
           </div>
         </div>

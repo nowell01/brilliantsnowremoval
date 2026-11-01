@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom'
 import { Eyebrow } from '../components/Common'
-import { plans, PHONE_LINK } from '../data'
+import { plans, PHONE, PHONE_LINK } from '../data'
 
 const notes = [
   { title: 'Price depends on', text: 'Driveway size, sidewalk length, steps, corner lot.' },
-  { title: 'No hidden fees', text: 'HST shown on your quote. Salt included.' },
+  { title: 'No hidden fees', text: 'HST shown on your quote.' },
   { title: 'Exact price in one call', text: 'Or send your address via the quote form.' },
 ]
 
@@ -32,9 +33,12 @@ function Plans() {
                   <span key={f}>· {f}</span>
                 ))}
               </div>
-              <a href={PHONE_LINK} className={plan.featured ? 'btn btn-white' : 'btn btn-outline'}>
+              <Link to="/quote" className="btn btn-outline btn-big">
+              Request a quote
+            </Link>
+              {/* <a href={PHONE_LINK} className={plan.featured ? 'btn btn-white' : 'btn btn-outline'}>
                 {plan.button}
-              </a>
+              </a> */}
             </div>
           ))}
         </div>
@@ -48,6 +52,12 @@ function Plans() {
           </div>
         ))}
       </section>
+      <section className="banner navy-bg">
+              <div className="banner-title">Not sure which you need? We'll tell you on the phone.</div>
+              <a href={PHONE_LINK} className="btn btn-white btn-big">
+                Call {PHONE}
+              </a>
+            </section>
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { EMAIL, PHONE } from '../data'
+import { plans, EMAIL, PHONE } from '../data'
 import { sendEmail } from '../sendEmail'
 
 const planOptions = ['Seasonal contract', 'Per visit', 'Salting only']
@@ -129,14 +129,14 @@ function Quote() {
       <aside className="quote-side">
         <div className="phone-box navy-bg">
           <span className="phone-box-deco"></span>
-          <div className="label light-blue">FASTER BY PHONE</div>
+          <div className="label light-blue">Do you have any questions?</div>
           <div className="phone-box-number">{PHONE}</div>
           <div className="card-text light-blue">Mon–Sat 7am–7pm. 24/7 during storms for contract clients.</div>
         </div>
         <div className="summary-box">
           <div className="label">YOUR SELECTION</div>
-          <div className="summary-plan">{planOptions[plan]}</div>
-          <div className="text">{selected.length > 0 ? selected.join(' · ') : 'No services selected'}</div>
+          <div className="summary-plan">{plans.find((p) => p.id === plan)?.name}</div>
+          <div className="text">{plans.find((p) => p.id === plan)?.text}</div>
           <div className="divider"></div>
           <div className="small-gray">Photo proof included with every visit.</div>
         </div>
