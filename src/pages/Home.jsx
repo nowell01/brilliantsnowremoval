@@ -94,7 +94,7 @@ function Home() {
             </div>
             <Photo src={photos.street} alt="Cleared walkway" className="phone-card-img" />
             <div className="phone-card-text">
-              Visit complete at 34 Eglinton Ave. Driveway, walkway and sidewalk cleared and salted.
+              Visit complete. Driveway, walkway and sidewalk cleared and salted.
             </div>
           </div>
         </div>
